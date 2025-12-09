@@ -22,11 +22,12 @@ public class ScoreService {
         var hardCodedScore = 2.3;
 
         var scores = repositoryDetails
+                .items()
                 .stream()
                 .map(repositoryDetail -> new RepositoryScore(
                         repositoryDetail.name(),
                         language,
-                        repositoryDetail.createdDate(),
+                        repositoryDetail.createdAt(),
                         hardCodedScore
 
                 ))
