@@ -41,9 +41,13 @@ class GithubClientTest {
 
         GithubRepositoryResponse response = githubClient.getRepositoriesDetails("java", LocalDate.parse("2024-01-01"));
 
+        var firstRepo = response.items().getFirst();
+
         assertThat(response.items()).hasSize(2);
-        assertThat(response.items().getFirst().name()).isEqualTo("TetrisLite");
-        assertThat(response.items().getFirst().createdAt()).isEqualTo("2025-10-06");
+        assertThat(firstRepo.name()).isEqualTo("TetrisLite");
+        assertThat(firstRepo.createdAt()).isEqualTo("2025-10-06");
+        assertThat(firstRepo.stars()).isEqualTo(18);
+        assertThat(firstRepo.forks()).isEqualTo(0);
     }
 
     static String read(String path) {

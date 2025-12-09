@@ -24,7 +24,11 @@ public class ScoreServiceTest {
         List<GithubRepositoryDetails> repositoryDetails = List.of(
                 new GithubRepositoryDetails(
                         "test-repo",
-                        LocalDate.of(2024, 1, 16)
+                        LocalDate.of(2024, 1, 16),
+                        LocalDate.of(2025, 2, 17),
+                        1,
+                        3
+
                 )
         );
         when(githubClient
