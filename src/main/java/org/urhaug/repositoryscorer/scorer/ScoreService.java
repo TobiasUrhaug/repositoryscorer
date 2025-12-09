@@ -25,11 +25,11 @@ public class ScoreService {
         return repositoryDetails
                 .items()
                 .stream()
-                .map(repositoryDetail -> new RepositoryScore(
-                        repositoryDetail.name(),
+                .map(repositoryScoringFactors -> new RepositoryScore(
+                        repositoryScoringFactors.name(),
                         language,
-                        repositoryDetail.createdAt(),
-                        scorer.score(repositoryDetail)
+                        repositoryScoringFactors.createdAt(),
+                        scorer.score(repositoryScoringFactors)
 
                 ))
                 .toList();

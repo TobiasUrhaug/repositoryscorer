@@ -2,7 +2,6 @@ package org.urhaug.repositoryscorer.scorer;
 
 import org.junit.jupiter.api.Test;
 import org.urhaug.repositoryscorer.github.GithubClient;
-import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
 import org.urhaug.repositoryscorer.github.GithubRepositoryResponse;
 import org.urhaug.repositoryscorer.scorer.algorithms.ScoringAlgorithm;
 
@@ -21,8 +20,8 @@ public class ScoreServiceTest {
         // Arrange
         GithubClient githubClient = mock(GithubClient.class);
         LocalDate earliestCreatedDate = LocalDate.of(2022, 12, 8);
-        List<GithubRepositoryDetails> repositoryDetails = List.of(
-                new GithubRepositoryDetails(
+        List<RepositoryScoringFactors> repositoryDetails = List.of(
+                new RepositoryScoringFactors(
                         "test-repo",
                         LocalDate.of(2024, 1, 16),
                         LocalDate.of(2025, 2, 17),

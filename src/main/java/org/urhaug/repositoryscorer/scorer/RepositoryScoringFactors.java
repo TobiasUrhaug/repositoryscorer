@@ -1,10 +1,10 @@
-package org.urhaug.repositoryscorer.github;
+package org.urhaug.repositoryscorer.scorer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
-public record GithubRepositoryDetails(
+public record RepositoryScoringFactors(
         String name,
         @JsonProperty("created_at")
         LocalDate createdAt,

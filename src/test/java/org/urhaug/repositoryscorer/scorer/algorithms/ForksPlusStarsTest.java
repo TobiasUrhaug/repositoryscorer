@@ -1,7 +1,7 @@
 package org.urhaug.repositoryscorer.scorer.algorithms;
 
 import org.junit.jupiter.api.Test;
-import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
+import org.urhaug.repositoryscorer.scorer.RepositoryScoringFactors;
 
 import java.time.LocalDate;
 
@@ -11,8 +11,8 @@ class ForksPlusStarsTest {
 
     @Test
     void scoresARepoAsStarsPlusForks() {
-        GithubRepositoryDetails repoDetails =
-                new GithubRepositoryDetails(
+        RepositoryScoringFactors repoDetails =
+                new RepositoryScoringFactors(
                         "test",
                         LocalDate.now(),
                         LocalDate.now(),

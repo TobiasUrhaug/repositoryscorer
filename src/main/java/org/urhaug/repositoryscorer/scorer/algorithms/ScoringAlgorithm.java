@@ -1,7 +1,7 @@
 package org.urhaug.repositoryscorer.scorer.algorithms;
 
-import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
+import org.urhaug.repositoryscorer.scorer.RepositoryScoringFactors;
 
 public interface ScoringAlgorithm {
-    double score(GithubRepositoryDetails repoDetails);
+    double score(RepositoryScoringFactors repoDetails);
 }
