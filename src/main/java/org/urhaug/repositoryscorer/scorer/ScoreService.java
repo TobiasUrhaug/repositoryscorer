@@ -12,14 +12,15 @@ import java.time.LocalDate;
 public class ScoreService {
 
     private final GithubClient githubClient;
+    private final ScoringAlgorithm scorer;
 
-    public ScoreService(GithubClient githubClient) {
+    public ScoreService(GithubClient githubClient, ScoringAlgorithm scorer) {
         this.githubClient = githubClient;
+        this.scorer = scorer;
     }
 
     public ScoreResponse getScoredRepositories(String language, LocalDate earliestCreatedDate) {
         var repositoryDetails = githubClient.getRepositoriesDetails(language, earliestCreatedDate);
-        var hardCodedScore = 2.3;
 
         var scores = repositoryDetails
                 .items()
@@ -28,7 +29,7 @@ public class ScoreService {
                         repositoryDetail.name(),
                         language,
                         repositoryDetail.createdAt(),
-                        hardCodedScore
+                        scorer.score(repositoryDetail)
 
                 ))
                 .toList();
