@@ -4,4 +4,4 @@ import org.urhaug.repositoryscorer.scorer.RepositoryScore;
 
 import java.util.List;
 
-public record ScoreResponse(List<RepositoryScore> repositories) {}
+public record ScoreResponse(List<RepositoryScore> repositoryScores) {}

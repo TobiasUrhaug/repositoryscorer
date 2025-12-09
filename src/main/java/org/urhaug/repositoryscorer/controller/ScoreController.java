@@ -27,7 +27,9 @@ public class ScoreController {
 
     @Operation(
             summary = "Get repository scores",
-            description = "Takes a language and a created date and returns repository scores."
+            description = """
+                Returns a list of scored repositories created on or after a given date using the provided language.
+            """
     )
     @GetMapping
     public ScoreResponse score(
@@ -38,14 +40,14 @@ public class ScoreController {
             @RequestParam
             String language,
             @Parameter(
-                    description = "Filter repositories created on or after this date",
+                    description = "The earliest created date for a repository to be scored.",
                     example = "2025-12-08"
             )
             @RequestParam
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-            LocalDate createdDate
+            LocalDate earliestCreatedDate
     ) {
-        List<RepositoryScore> scoredRepositories = scoreService.getScoredRepositories(language, createdDate);
+        List<RepositoryScore> scoredRepositories = scoreService.getScoredRepositories(language, earliestCreatedDate);
         return new ScoreResponse(scoredRepositories);
     }
 }

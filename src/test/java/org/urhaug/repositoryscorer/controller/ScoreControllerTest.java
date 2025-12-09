@@ -48,17 +48,17 @@ class ScoreControllerTest {
 
         mockMvc.perform(get("/score")
                         .param("language", "java")
-                        .param("createdDate", "2022-12-17"))
+                        .param("earliestCreatedDate", "2022-12-17"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.repositories").isArray())
-                .andExpect(jsonPath("$.repositories[0].name").value("repo-one"))
-                .andExpect(jsonPath("$.repositories[0].score").value(87.5))
-                .andExpect(jsonPath("$.repositories[0].language").value("Java"))
-                .andExpect(jsonPath("$.repositories[0].createdDate").value("2023-01-15"))
-                .andExpect(jsonPath("$.repositories[1].name").value("repo-two"))
-                .andExpect(jsonPath("$.repositories[1].score").value(92.0))
-                .andExpect(jsonPath("$.repositories[1].score").value(92.0))
-                .andExpect(jsonPath("$.repositories[1].createdDate").value("2025-03-23"))
-                .andExpect(jsonPath("$.repositories[1].language").value("Kotlin"));
+                .andExpect(jsonPath("$.repositoryScores").isArray())
+                .andExpect(jsonPath("$.repositoryScores[0].name").value("repo-one"))
+                .andExpect(jsonPath("$.repositoryScores[0].score").value(87.5))
+                .andExpect(jsonPath("$.repositoryScores[0].language").value("Java"))
+                .andExpect(jsonPath("$.repositoryScores[0].createdDate").value("2023-01-15"))
+                .andExpect(jsonPath("$.repositoryScores[1].name").value("repo-two"))
+                .andExpect(jsonPath("$.repositoryScores[1].score").value(92.0))
+                .andExpect(jsonPath("$.repositoryScores[1].score").value(92.0))
+                .andExpect(jsonPath("$.repositoryScores[1].createdDate").value("2025-03-23"))
+                .andExpect(jsonPath("$.repositoryScores[1].language").value("Kotlin"));
     }
 }
