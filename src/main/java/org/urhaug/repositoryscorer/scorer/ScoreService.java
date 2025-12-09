@@ -2,11 +2,11 @@ package org.urhaug.repositoryscorer.scorer;
 
 
 import org.springframework.stereotype.Service;
-import org.urhaug.repositoryscorer.controller.ScoreResponse;
 import org.urhaug.repositoryscorer.github.GithubClient;
 import org.urhaug.repositoryscorer.scorer.algorithms.ScoringAlgorithm;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ScoreService {
@@ -19,10 +19,10 @@ public class ScoreService {
         this.scorer = scorer;
     }
 
-    public ScoreResponse getScoredRepositories(String language, LocalDate earliestCreatedDate) {
+    public List<RepositoryScore> getScoredRepositories(String language, LocalDate earliestCreatedDate) {
         var repositoryDetails = githubClient.getRepositoriesDetails(language, earliestCreatedDate);
 
-        var scores = repositoryDetails
+        return repositoryDetails
                 .items()
                 .stream()
                 .map(repositoryDetail -> new RepositoryScore(
@@ -33,8 +33,6 @@ public class ScoreService {
 
                 ))
                 .toList();
-
-        return new ScoreResponse(scores);
     }
 }
 

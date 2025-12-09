@@ -1,8 +1,7 @@
-package org.urhaug.repositoryscorer.scorer;
+package org.urhaug.repositoryscorer.scorer.algorithms;
 
 import org.junit.jupiter.api.Test;
 import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
-import org.urhaug.repositoryscorer.scorer.algorithms.ForksPlusStars;
 
 import java.time.LocalDate;
 

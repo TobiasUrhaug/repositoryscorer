@@ -1,7 +1,6 @@
 package org.urhaug.repositoryscorer.scorer;
 
 import org.junit.jupiter.api.Test;
-import org.urhaug.repositoryscorer.controller.ScoreResponse;
 import org.urhaug.repositoryscorer.github.GithubClient;
 import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
 import org.urhaug.repositoryscorer.github.GithubRepositoryResponse;
@@ -42,15 +41,15 @@ public class ScoreServiceTest {
         ScoreService scoreService = new ScoreService(githubClient, scorer);
 
         // Act
-        ScoreResponse response = scoreService.getScoredRepositories("java", earliestCreatedDate);
+        List<RepositoryScore> scoredRepositories = scoreService.getScoredRepositories("java", earliestCreatedDate);
 
         // Assertions
-        assertThat(response).isNotNull();
-        assertThat(response.repositories()).hasSize(1);
-        assertThat(response.repositories())
+        assertThat(scoredRepositories).isNotNull();
+        assertThat(scoredRepositories).hasSize(1);
+        assertThat(scoredRepositories)
                 .extracting(RepositoryScore::name)
                 .containsExactlyInAnyOrder("test-repo");
-        assertThat(response.repositories())
+        assertThat(scoredRepositories)
                 .extracting(RepositoryScore::score)
                 .containsExactlyInAnyOrder(5.6);
     }

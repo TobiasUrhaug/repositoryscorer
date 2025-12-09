@@ -27,26 +27,24 @@ class ScoreControllerTest {
 
     @Test
     void testScoreEndpoint() throws Exception {
-        ScoreResponse mockResponse = new ScoreResponse(
-                List.of(
-                        new RepositoryScore(
-                                "repo-one",
-                                "Java",
-                                LocalDate.of(2023, 1, 15),
-                                87.5
-                        ),
-                        new RepositoryScore(
-                                "repo-two",
-                                "Kotlin",
-                                LocalDate.of(2025, 3, 23),
-                                92.0
-                        )
+        List<RepositoryScore> mockRepositoryScores = List.of(
+                new RepositoryScore(
+                        "repo-one",
+                        "Java",
+                        LocalDate.of(2023, 1, 15),
+                        87.5
+                ),
+                new RepositoryScore(
+                        "repo-two",
+                        "Kotlin",
+                        LocalDate.of(2025, 3, 23),
+                        92.0
                 )
         );
 
         when(scoreService
                     .getScoredRepositories("java", LocalDate.of(2022, 12, 17)))
-                    .thenReturn(mockResponse);
+                    .thenReturn(mockRepositoryScores);
 
         mockMvc.perform(get("/score")
                         .param("language", "java")

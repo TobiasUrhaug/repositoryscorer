@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.urhaug.repositoryscorer.scorer.RepositoryScore;
 import org.urhaug.repositoryscorer.scorer.ScoreService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/score")
@@ -43,6 +45,7 @@ public class ScoreController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate createdDate
     ) {
-        return scoreService.getScoredRepositories(language, createdDate);
+        List<RepositoryScore> scoredRepositories = scoreService.getScoredRepositories(language, createdDate);
+        return new ScoreResponse(scoredRepositories);
     }
 }
