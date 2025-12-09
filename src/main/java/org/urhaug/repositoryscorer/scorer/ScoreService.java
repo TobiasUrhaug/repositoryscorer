@@ -2,9 +2,9 @@ package org.urhaug.repositoryscorer.scorer;
 
 
 import org.springframework.stereotype.Service;
-import org.urhaug.repositoryscorer.githubclient.GithubClient;
-import org.urhaug.repositoryscorer.scorer.dto.RepositoryScore;
-import org.urhaug.repositoryscorer.scorer.dto.ScoreResponse;
+import org.urhaug.repositoryscorer.controller.ScoreResponse;
+import org.urhaug.repositoryscorer.github.GithubClient;
+import org.urhaug.repositoryscorer.scorer.algorithms.ScoringAlgorithm;
 
 import java.time.LocalDate;
 

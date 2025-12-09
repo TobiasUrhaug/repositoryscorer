@@ -1,4 +1,4 @@
-package org.urhaug.repositoryscorer.githubclient;
+package org.urhaug.repositoryscorer.github;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;

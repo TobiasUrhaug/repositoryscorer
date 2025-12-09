@@ -1,4 +1,4 @@
-package org.urhaug.repositoryscorer.githubclient;
+package org.urhaug.repositoryscorer.github;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

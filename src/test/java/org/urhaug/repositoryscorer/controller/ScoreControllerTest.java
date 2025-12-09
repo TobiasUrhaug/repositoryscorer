@@ -1,19 +1,20 @@
-package org.urhaug.repositoryscorer.scorer;
+package org.urhaug.repositoryscorer.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.urhaug.repositoryscorer.scorer.dto.RepositoryScore;
-import org.urhaug.repositoryscorer.scorer.dto.ScoreResponse;
+import org.urhaug.repositoryscorer.scorer.RepositoryScore;
+import org.urhaug.repositoryscorer.scorer.ScoreService;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ScoreController.class)
 class ScoreControllerTest {

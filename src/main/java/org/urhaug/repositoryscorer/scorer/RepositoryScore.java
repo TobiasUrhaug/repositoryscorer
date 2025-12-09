@@ -1,4 +1,4 @@
-package org.urhaug.repositoryscorer.scorer.dto;
+package org.urhaug.repositoryscorer.scorer;
 
 import java.time.LocalDate;
 

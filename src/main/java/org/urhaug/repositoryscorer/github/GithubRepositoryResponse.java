@@ -1,4 +1,4 @@
-package org.urhaug.repositoryscorer.githubclient;
+package org.urhaug.repositoryscorer.github;
 
 import java.util.List;
 

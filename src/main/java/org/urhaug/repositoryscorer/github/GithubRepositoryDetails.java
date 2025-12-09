@@ -1,4 +1,4 @@
-package org.urhaug.repositoryscorer.githubclient;
+package org.urhaug.repositoryscorer.github;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

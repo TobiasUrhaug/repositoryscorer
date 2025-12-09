@@ -1,11 +1,11 @@
 package org.urhaug.repositoryscorer.scorer;
 
 import org.junit.jupiter.api.Test;
-import org.urhaug.repositoryscorer.githubclient.GithubClient;
-import org.urhaug.repositoryscorer.githubclient.GithubRepositoryDetails;
-import org.urhaug.repositoryscorer.githubclient.GithubRepositoryResponse;
-import org.urhaug.repositoryscorer.scorer.dto.RepositoryScore;
-import org.urhaug.repositoryscorer.scorer.dto.ScoreResponse;
+import org.urhaug.repositoryscorer.controller.ScoreResponse;
+import org.urhaug.repositoryscorer.github.GithubClient;
+import org.urhaug.repositoryscorer.github.GithubRepositoryDetails;
+import org.urhaug.repositoryscorer.github.GithubRepositoryResponse;
+import org.urhaug.repositoryscorer.scorer.algorithms.ScoringAlgorithm;
 
 import java.time.LocalDate;
 import java.util.List;
