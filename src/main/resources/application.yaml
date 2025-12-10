@@ -1,3 +1,6 @@
 spring:
   application:
     name: repositoryscorer
+
+github:
+  defaultPerPage: 50
