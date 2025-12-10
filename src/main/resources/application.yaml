@@ -4,3 +4,4 @@ spring:
 
 github:
   defaultPerPage: 50
+  apiUrl: "https://api.github.com"

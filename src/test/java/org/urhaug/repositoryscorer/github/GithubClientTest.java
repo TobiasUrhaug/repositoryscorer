@@ -2,10 +2,13 @@ package org.urhaug.repositoryscorer.github;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.restclient.test.MockServerRestClientCustomizer;
 import org.springframework.boot.restclient.test.autoconfigure.RestClientTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -19,6 +22,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(GithubClient.class)
+@EnableConfigurationProperties(GithubProperties.class)
 class GithubClientTest {
 
     @Autowired
@@ -27,6 +31,12 @@ class GithubClientTest {
     @Autowired
     private MockServerRestClientCustomizer serverCustomizer;
 
+    @DynamicPropertySource
+    static void properties(DynamicPropertyRegistry registry) {
+        registry.add("github.perPage", () -> 35);
+        registry.add("github.apiUrl", () -> "https://mocked.github.com");
+    }
+
     @Test
     void whenPayloadIsValid_aResponseIsExtracted() {
         var validJson = read("/payloads/github-repository-response.json");
@@ -34,7 +44,7 @@ class GithubClientTest {
         serverCustomizer
                 .getServer()
                 .expect(requestTo(
-                        "https://api.github.com/search/repositories?q=language:java%20created:%3E%3D2024-01-01"
+                        "https://mocked.github.com/search/repositories?q=language:java%20created:%3E%3D2024-01-01&per_page=35"
                 ))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(validJson, MediaType.APPLICATION_JSON));

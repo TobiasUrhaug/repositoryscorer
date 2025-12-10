@@ -1,6 +1,5 @@
 package org.urhaug.repositoryscorer.github;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -9,14 +8,14 @@ import java.time.LocalDate;
 @Component
 public class GithubClient {
 
-    @Value("${github.defaultPerPage:30}")
-    private int defaultPerPage;
     private final RestClient restClient;
+    private final GithubProperties properties;
 
-    public GithubClient(RestClient.Builder builder) {
+    public GithubClient(RestClient.Builder builder, GithubProperties properties) {
         this.restClient = builder
-                .baseUrl("https://api.github.com")
+                .baseUrl(properties.apiUrl())
                 .build();
+        this.properties = properties;
     }
 
     public GithubRepositoryResponse getRepositoriesDetails(String language, LocalDate earliestCreatedDate) {
@@ -26,7 +25,7 @@ public class GithubClient {
                .uri(uriBuilder -> uriBuilder
                        .path("/search/repositories")
                        .queryParam("q", query)
-                       .queryParam("per_page", defaultPerPage)
+                       .queryParam("per_page", properties.perPage())
                        .build())
                .retrieve()
                .body(GithubRepositoryResponse.class);
